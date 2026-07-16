@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+}
+
+.caveat {
+  font-weight: 400;  /* normal weight */
+
+}
+
+.caveat-bold {
+  font-weight: 700;  /* bold weight */
+}

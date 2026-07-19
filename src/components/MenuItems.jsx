@@ -3,8 +3,12 @@ import MenuPng from "@/assets/Menu/Menu.webp";
 import Items_Adding from "@/assets/Menu/Items_Adding.webp";
 import Items_Layout from "@/assets/Menu/Items_Layout.webp";
 import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import ItemPicker from "./ItemPicker";
 
-export default function MenuItems() {
+export default function MenuItems({ onAddItem }) {
+  const [showItemCreator, setShowItemCreator] = useState(false);
+  const navigate = useNavigate();
   return (
     <div>
       <div
@@ -14,7 +18,7 @@ export default function MenuItems() {
           height: "100vh",
           width: "22vw",
           padding: "2vw",
-          backgroundColor: "rgba(132, 132, 132, 0.6)",
+          backgroundColor: "rgba(246, 244, 244, 0.6)",
           borderRadius: "1vw",
         }}
       >
@@ -50,13 +54,14 @@ export default function MenuItems() {
               border: "none",
               position: "absolute",
               top: "32vh",
-              left: "2vw",
+              left: "4vw",
               height: "16vh",
               width: "6vw",
               cursor: "pointer",
               pointerEvents: "all",
               zIndex: "1",
             }}
+            onClick={() => setShowItemCreator(true)}
           ></button>
 
           <button
@@ -65,21 +70,7 @@ export default function MenuItems() {
               border: "none",
               position: "absolute",
               top: "32vh",
-              left: "9vw",
-              height: "16vh",
-              width: "6vw",
-              cursor: "pointer",
-              zIndex: "1",
-            }}
-          ></button>
-
-          <button
-            style={{
-              background: "transparent",
-              border: "none",
-              position: "absolute",
-              top: "32vh",
-              right: "2vw",
+              right: "5vw",
               height: "16vh",
               width: "6vw",
               cursor: "pointer",
@@ -93,7 +84,7 @@ export default function MenuItems() {
               border: "none",
               position: "absolute",
               top: "65vh",
-              right: "4.4vw",
+              right: "4vw",
               height: "16vh",
               width: "6vw",
               cursor: "pointer",
@@ -125,19 +116,18 @@ export default function MenuItems() {
               marginBottom: "-1vh",
             }}
           >
-            Appearence
+            Items
           </h1>
-          <img src={Items_Adding} style={{ width: "25vw", height: "auto" }} />
+          <img src={Items_Adding} style={{ width: "21vw", height: "auto" }} />
           <div
             style={{
               fontSize: "1.5vw",
               display: "flex",
-              gap: "3.4vw",
+              gap: "8vw",
               alignItems: "center",
-              marginLeft: "1.2vw",
+              marginLeft: "2.1vw",
             }}
           >
-            <p style={{ margin: "0.2vw" }}>Furniture</p>
             <p style={{ margin: "0.2vw" }}>Items</p>
             <p style={{ margin: "0.2vw" }}>Wallpaper</p>
           </div>
@@ -155,7 +145,7 @@ export default function MenuItems() {
 
           <img
             src={Items_Layout}
-            style={{ width: "20vw", height: "auto", marginLeft: "2vw" }}
+            style={{ width: "19vw", height: "auto", marginLeft: "2vw" }}
           />
           <div
             style={{
@@ -171,6 +161,16 @@ export default function MenuItems() {
           </div>
         </div>
       </div>
+      {/* Popup */}
+      {showItemCreator && (
+        <ItemPicker
+          onClose={() => setShowItemCreator(false)}
+          onAddItem={(newItem) => {
+            onAddItem(newItem);
+            setShowItemCreator(false);
+          }}
+        />
+      )}
     </div>
   );
 }

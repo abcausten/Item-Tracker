@@ -2,6 +2,7 @@ import Drawer from "@/assets/Furniture/Drawer.webp";
 import Desk from "@/assets/Furniture/Desk.webp";
 import Shelf from "@/assets/Furniture/Shelf.webp";
 import Bookshelf from "@/assets/Furniture/Bookshelf.webp";
+import Red_X from "@/assets/Popup/Red_X.webp";
 
 const FURNITURE = [
   { id: "drawer", label: "Drawer", src: Drawer },
@@ -50,6 +51,7 @@ export default function FurniturePicker({ onSelect, onClose }) {
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
             gap: "2vw",
+            placeItems: "center",
           }}
         >
           {FURNITURE.map((item) => (
@@ -69,10 +71,10 @@ export default function FurniturePicker({ onSelect, onClose }) {
                 gap: "0.5vw",
               }}
             >
-              <img src={item.src} style={{ width: "10vw", height: "auto" }} />
               <span className="caveat" style={{ fontSize: "1.5vw" }}>
                 {item.label}
               </span>
+              <img src={item.src} style={{ width: "10vw", height: "auto" }} />
             </button>
           ))}
         </div>
@@ -89,7 +91,7 @@ export default function FurniturePicker({ onSelect, onClose }) {
             cursor: "pointer",
           }}
         >
-          ✕
+          <img src={Red_X} style={{ height: "3vh", width: "auto" }} />
         </button>
       </div>
     </>

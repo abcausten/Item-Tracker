@@ -92,7 +92,6 @@ export default function Room1({
                   : "none",
             }}
           />
-
           {/* popup menu when selected */}
           {selected === item.instanceId && (
             <div

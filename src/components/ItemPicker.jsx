@@ -1,6 +1,7 @@
 import { useDropzone } from "react-dropzone";
 import { useState, useRef } from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
+import Red_X from "@/assets/Popup/Red_X.webp";
 
 export default function ItemPicker({ onClose, onAddItem }) {
   const [preview, setPreview] = useState(null);
@@ -160,7 +161,7 @@ export default function ItemPicker({ onClose, onAddItem }) {
             height="30vw"
             strokeColor={color}
             strokeWidth={brushSize}
-            canvasColor="white"
+            canvasColor="transparent"
           />
         </div>
 
@@ -224,7 +225,13 @@ export default function ItemPicker({ onClose, onAddItem }) {
             cursor: "pointer",
           }}
         >
-          ✕
+          <img
+            src={Red_X}
+            style={{
+              width: "4vw",
+              height: "auto",
+            }}
+          ></img>
         </button>
       </div>
     </>

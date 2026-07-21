@@ -28,7 +28,12 @@ export default function FurniturePage({ placedItems, onUpdateFurniture }) {
     onUpdateFurniture(Number(instanceId), {
       customItems: [
         ...(item.customItems || []),
-        { ...newItem, x: 200, y: 200, name: "New Item" }, // ← default name
+        {
+          ...newItem,
+          x: newItem.x ?? 200,
+          y: newItem.y ?? 200,
+          name: newItem.name ?? "New Item",
+        },
       ],
     });
   };
@@ -36,13 +41,17 @@ export default function FurniturePage({ placedItems, onUpdateFurniture }) {
   const onMouseDown = (e, itemId) => {
     e.preventDefault();
     e.stopPropagation();
-    const customItem = item.customItems.find((i) => i.id === itemId);
+    const freshItem = placedItems.find(
+      (i) => i.instanceId === Number(instanceId),
+    );
+    const customItem = freshItem?.customItems?.find((i) => i.id === itemId);
+    if (!customItem) return;
     setMouseDownInfo({
       itemId,
       startX: e.clientX,
       startY: e.clientY,
-      offsetX: e.clientX - customItem.x,
-      offsetY: e.clientY - customItem.y,
+      offsetX: e.clientX - (customItem.x ?? 200),
+      offsetY: e.clientY - (customItem.y ?? 200),
     });
   };
 
@@ -57,7 +66,12 @@ export default function FurniturePage({ placedItems, onUpdateFurniture }) {
     }
 
     if (dragging) {
-      const updatedItems = item.customItems.map((i) =>
+      const freshItem = placedItems.find(
+        (i) => i.instanceId === Number(instanceId),
+      );
+      if (!freshItem?.customItems) return;
+
+      const updatedItems = freshItem.customItems.map((i) =>
         i.id === dragging.itemId
           ? {
               ...i,
@@ -69,6 +83,15 @@ export default function FurniturePage({ placedItems, onUpdateFurniture }) {
       onUpdateFurniture(Number(instanceId), { customItems: updatedItems });
     }
   };
+
+  if (dragging) {
+    console.log("dragging item:", dragging.itemId);
+    const freshItem = placedItems.find(
+      (i) => i.instanceId === Number(instanceId),
+    );
+    console.log("freshItem:", freshItem);
+    console.log("freshItem customItems:", freshItem?.customItems);
+  }
 
   const onMouseUp = () => {
     if (mouseDownInfo && !dragging) {

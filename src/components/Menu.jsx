@@ -4,9 +4,17 @@ import Appearance from "@/assets/Menu/Appearance.webp";
 import Layout from "@/assets/Menu/Layout.webp";
 import { useState } from "react";
 import FurniturePicker from "./FurniturePicker";
+import ItemsOverview from "@/components/ItemsOverview.jsx";
 
-export default function Menu({ onAddFurniture }) {
+export default function Menu({
+  onAddFurniture,
+  selectedFurniture,
+  onAddItem,
+  placedItems,
+  onPlaceItem,
+}) {
   const [showFurniturePicker, setShowFurniturePicker] = useState(false);
+  const [showItemsOverview, setShowItemsOverview] = useState(false);
   return (
     <div>
       <div
@@ -62,6 +70,7 @@ export default function Menu({ onAddFurniture }) {
           ></button>
 
           <button
+            onClick={() => setShowItemsOverview(true)}
             style={{
               background: "transparent",
               border: "none",
@@ -178,6 +187,13 @@ export default function Menu({ onAddFurniture }) {
         <FurniturePicker
           onSelect={onAddFurniture}
           onClose={() => setShowFurniturePicker(false)}
+        />
+      )}
+      {showItemsOverview && (
+        <ItemsOverview
+          placedItems={placedItems}
+          onClose={() => setShowItemsOverview(false)}
+          onPlaceItem={onPlaceItem}
         />
       )}
     </div>

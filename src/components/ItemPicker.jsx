@@ -14,10 +14,22 @@ export default function ItemPicker({ onClose, onAddItem }) {
     console.log("preview:", preview);
 
     if (preview) {
-      onAddItem({ id: Date.now(), src: preview, label: "Custom Item" });
+      onAddItem({
+        id: Date.now(),
+        src: preview,
+        label: "Custom Item",
+        x: 1000,
+        y: 200,
+      });
     } else {
       const dataUrl = await canvasRef.current.exportImage("png");
-      onAddItem({ id: Date.now(), src: dataUrl, label: "Custom Item" });
+      onAddItem({
+        id: Date.now(),
+        src: dataUrl,
+        label: "Custom Item",
+        x: 1000,
+        y: 200,
+      });
     }
     onClose();
   };

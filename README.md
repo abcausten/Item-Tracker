@@ -40,19 +40,20 @@ npm run dev
 Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## Project Structure
-src/
-├── assets/ # Images and icons
-├── components/ # Reusable components
-│ ├── Menu.jsx
-│ ├── MenuItems.jsx
-│ ├── FurniturePicker.jsx
-│ ├── ItemPicker.jsx
-│ └── ItemsOverview.jsx
-├── pages/ # Page components
-│ ├── Room1.jsx
-│ └── FurniturePage.jsx
-└── main.jsx
 
-
+```
+./
+├── index.html
+├── package.json
+└── src/
+    ├── App.jsx
+    ├── assets/
+    ├── components/
+    │   ├── Menu.jsx
+    │   └── ...
+    └── pages/
+        ├── Room1.jsx
+        └── FurniturePage.jsx
+```
 ## License
 MIT

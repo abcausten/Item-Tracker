@@ -1,18 +1,58 @@
-# React + Vite
+# Room Inventory Tracker
+I created this as a project to have a unique way of storing household items. I wanted a to visualize and track items without it feeling to much like a chore. I also wanted for users to be able to see a lot of items at once and for them to have the freedom to be able to organize visually in whichever way they wanted. 
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## Future Changes 
+Eventually I want to be able to move the project to be web hosted and to have storage functions keeping pages and items in tact even if users exit out.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 🛋️ **Place Furniture** — Choose from a selection of hand-drawn furniture and drag it anywhere on the room saving its location
+- 🎨 **Draw Items** — Use the built-in canvas fucntionality to draw items or import images
+- 📦 **Item Management** — Assign items to specific furniture pieces and view them grouped together from the home screen
+- 🗂️ **Per-Furniture Pages** — Each placed furniture has its own page for organizing its contents
+- 🖱️ **Drag & Drop** — Move furniture and items freely around the room pinning down its location
+- 🗑️ **Delete & Rename** — Remove or rename any item or furniture
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **React** — UI and component architecture
+- **React Router** — Multi-page navigation with dynamic routes
+- **Javascript** - Coding language 
+- **Vite** — Build tool and dev server
+- **react-sketch-canvas** — Used for hand-drawn item canvas
+- **react-dropzone** — Image import via drag and drop
 
-Note: This will impact Vite dev & build performances.
+## Getting Started
 
-## Expanding the Oxlint configuration
+### Prerequisites
+- Node.js v18+
+- npm
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+### Installation
+
+```bash
+git clone https://github.com/abcausten/room-inventory-tracker.git
+cd room-inventory-tracker
+npm install
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Project Structure
+src/
+├── assets/ # Images and icons
+├── components/ # Reusable components
+│ ├── Menu.jsx
+│ ├── MenuItems.jsx
+│ ├── FurniturePicker.jsx
+│ ├── ItemPicker.jsx
+│ └── ItemsOverview.jsx
+├── pages/ # Page components
+│ ├── Room1.jsx
+│ └── FurniturePage.jsx
+└── main.jsx
+
+
+## License
+MIT
